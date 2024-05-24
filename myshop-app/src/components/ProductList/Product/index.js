@@ -8,9 +8,17 @@ import {
   ProductPriceIcon,
   ProductRatingIcon,
   DivIconContainer,
+  StyledButton,
 } from "./styles";
 
-const Product = ({ id, title, description, price, rating, image }) => {
+const Product = ({
+  title,
+  description,
+  price,
+  rating,
+  image,
+  handleOnClick,
+}) => {
   return (
     <StyledSection>
       <ProductImage src={image} />
@@ -23,6 +31,9 @@ const Product = ({ id, title, description, price, rating, image }) => {
       <DivIconContainer>
         <ProductRatingIcon />
         <ProductDetails $rating={rating}>{rating}</ProductDetails>
+      </DivIconContainer>
+      <DivIconContainer>
+        <StyledButton onClick={handleOnClick}>Add to cart</StyledButton>
       </DivIconContainer>
     </StyledSection>
   );
