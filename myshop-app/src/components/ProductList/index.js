@@ -1,13 +1,17 @@
 import React from "react";
 import "./styles";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { StyledArticle } from "./styles";
 import Product from "./Product";
+import { addToCart } from "../../actions";
 
 const ProductList = () => {
   const products = useSelector((state) => state.products.productsItems);
-  console.log("PRODUCT LIST ------>", products);
-  console.log("LENGHT", products.length);
+  const dispatch = useDispatch();
+
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+  };
 
   return (
     <main>
@@ -23,6 +27,8 @@ const ProductList = () => {
                   price={price}
                   rating={rating}
                   key={id}
+                  handleOnClick={() => handleAddToCart(product)}
+                  id={id}
                 />
               );
             })
